@@ -1,0 +1,34 @@
+{
+  "UIQuestion": [
+    {
+      "QID": "1",
+      "Question": "This is a test question",
+      "userCount": 0,
+      "input": [
+        0
+      ]
+    },
+    {
+      "QID": "2",
+      "Question": "This is a test question2",
+      "userCount": 0,
+      "input": [
+        0
+      ]
+    }
+  ],
+  "BLQuestion": [
+    {
+      "QID": "1",
+      "Question": "This is a test question1",
+      "yesCount": 0,
+      "noCount": 0
+    },
+    {
+      "QID": "2",
+      "Question": "This is a test question2",
+      "yesCount": 0,
+      "noCount": 0
+    }
+  ]
+}
