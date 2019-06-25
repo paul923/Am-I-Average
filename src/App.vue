@@ -8,12 +8,10 @@
 </template>
 
 <script>
-import InitScreen from './components/InitScreen.vue';
 
 export default {
   name: "app",
   components: {
-    InitScreen
   }
 };
 </script>

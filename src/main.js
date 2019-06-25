@@ -18,13 +18,14 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/", 
+    name: 'init',
+    component: InitScreen
+  },
+  {
     path: "/age", 
     name: "age",
     component: AgeScreen
-  },
-  {
-    path: "/", 
-    component: InitScreen
   },
   {
     path: "/ui-question", 
