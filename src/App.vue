@@ -1,14 +1,8 @@
 <template>
   <div id="app" class='container'>
     
-    <init-screen></init-screen>
+    <router-view></router-view>
 
-
-
-    <div id="ui_question"></div>
-    <div id="ui_result" style="display:none"></div>
-    <div id="bl_question" style="display:none"></div>
-    <div id="bl_result" style="display:none"></div>
   </div>
 
 </template>
