@@ -11,10 +11,12 @@
     "animate.css": "^3.7.2",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
+    "firebase": "^6.2.3",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.6"
+    "vue-router": "^3.0.6",
+    "vuefire": "^2.0.0-alpha.24"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",

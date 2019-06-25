@@ -9,8 +9,11 @@ import AgeScreen from './components/AgeScreen.vue';
 import UIQuestion from './components/UIQuestion.vue';
 import BLQuestion from './components/BLQuestion.vue';
 
+
+
 import "bootstrap/dist/css/bootstrap.css";
 import "animate.css/animate.css";
+
 
 Vue.config.productionTip = false
 
