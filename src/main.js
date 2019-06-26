@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import VueRouter from 'vue-router';
 import "bootstrap";
+import VueFirestore from 'vue-firestore';
 
 // Components import
 import InitScreen from './components/InitScreen.vue';
@@ -9,34 +10,33 @@ import AgeScreen from './components/AgeScreen.vue';
 import UIQuestion from './components/UIQuestion.vue';
 import BLQuestion from './components/BLQuestion.vue';
 
-
-
 import "bootstrap/dist/css/bootstrap.css";
 import "animate.css/animate.css";
 
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
+Vue.use(VueFirestore);
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/", 
+    path: "/",
     name: 'init',
     component: InitScreen
   },
   {
-    path: "/age", 
+    path: "/age",
     name: "age",
     component: AgeScreen
   },
   {
-    path: "/ui-question", 
+    path: "/ui-question",
     name: "ui-question",
     component: UIQuestion
   },
   {
-    path: "/bl-question", 
+    path: "/bl-question",
     name: "bl-question",
     component: BLQuestion
   }

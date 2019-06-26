@@ -18,14 +18,8 @@
 <script>
 
 export default {
-  // watch: {
-  //   '$route' (to, from){
-
-  //   }
-  // },
-  // created(){
-    
-  // },
+  
+  
   methods: {
     randomQuestion(){
       let number = Math.floor((Math.random() * 2) + 1); // number between 1 and 2;

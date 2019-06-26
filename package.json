@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@firebase/app": "^0.4.8",
+    "@firebase/firestore": "^1.4.2",
     "animate.css": "^3.7.2",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
@@ -15,8 +17,9 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "vue": "^2.6.10",
+    "vue-firestore": "^0.3.22",
     "vue-router": "^3.0.6",
-    "vuefire": "^2.0.0-alpha.24"
+    "vuefire": "^2.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
