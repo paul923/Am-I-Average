@@ -15,9 +15,6 @@
 
 <script>
 export default {
-  beforeCreate: function () {
-    this.$router.push('/')
-  },
   computed: {
     getQ () {
       return this.$store.getters.getQ
@@ -37,7 +34,6 @@ export default {
     },
     randomQuestion() {
       let number = Math.floor(Math.random() * 2 + 1); // number between 1 and 2;
-
       // Decides a question between user input and boolean
       switch (number) {
         case 1:

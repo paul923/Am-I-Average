@@ -14,6 +14,9 @@
 
 <script>
 export default {
+  beforeCreate: function(){
+    this.$router.push('/');
+  },
   created: function() {
     this.$store.dispatch('setItems')
   },

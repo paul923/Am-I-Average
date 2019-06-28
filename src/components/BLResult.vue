@@ -20,9 +20,6 @@
 
 
 export default {
-  beforeCreate: function () {
-    this.$router.push('/')
-  },
   computed: {
     getResult(){
       return this.$store.getters.getBLResult
