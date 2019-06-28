@@ -2,6 +2,7 @@
   <div id="bl-screen" class="screen col-11 mx-auto h-75 border border-primary p-4 rounded">
     <div id="questionBox" class="text-center">
       <h3>{{ getQuestion }}</h3>
+      <h4>{{getQ}}</h4>
     </div>
 
     <div class="text-center">
@@ -13,12 +14,16 @@
 </template>
 
 <script>
-import { db } from "../firebase";
-
 export default {
+  beforeCreate: function () {
+    this.$router.push('/')
+  },
   computed: {
+    getQ () {
+      return this.$store.getters.getQ
+    },
     getQuestion(){
-      return this.$store.getters.getBLQuestion;
+      return this.$store.getters.getBLQuestion[0].content;
     }
   },
   methods: {

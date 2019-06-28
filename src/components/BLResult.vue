@@ -20,6 +20,9 @@
 
 
 export default {
+  beforeCreate: function () {
+    this.$router.push('/')
+  },
   computed: {
     getResult(){
       return this.$store.getters.getBLResult
@@ -28,7 +31,7 @@ export default {
   //TODO: show result from previous screen
   methods: {
     randomQuestion(){
-      // this.$store.state.blQuestion.shift();
+      this.$store.state.blQuestion.shift();
       // let number = Math.floor((Math.random() * 2) + 1); // number between 1 and 2;
       this.$router.push('bl-question');
       // Decides a question between user input and boolean

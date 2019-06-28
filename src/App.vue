@@ -4,7 +4,9 @@
     mode="out-in"
     enter-active-class="animated fadeInLeft"
     leave-active-class="animated fadeOutRight">
+      <keep-alive>
         <router-view></router-view>
+      </keep-alive>
     </transition>
   </div>
 
@@ -12,7 +14,7 @@
 
 <script>
 export default {
-  beforeCreate: function() {
+  created: function() {
     this.$store.dispatch('setItems')
   },
   name: "app",

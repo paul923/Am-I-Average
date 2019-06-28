@@ -17,16 +17,9 @@
 <script>
 import { db } from "../firebase";
 export default {
-  data() {
-    return {
-      questions: []
-    };
-  },
   computed: {
-    getQuestion: function(){
-      // Randomizing questions array
-      this.questions = this.questions.sort(() => Math.random() - 0.5);
-      return this.questions[0]
+    getQuestion(){
+      return this.$store.getters.getBLQuestion;
     }
   },
   firestore() {
@@ -41,9 +34,6 @@ export default {
     },
     randomQuestion() {
       let number = Math.floor(Math.random() * 2 + 1); // number between 1 and 2;
-
-      // removes the first item in the array
-      this.questions.shift();
 
       // Decides a question between user input and boolean
       switch (number) {
