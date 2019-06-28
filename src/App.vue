@@ -1,16 +1,20 @@
 <template>
   <div id="app" class='container'>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
-
+    <transition 
+    mode="out-in"
+    enter-active-class="animated fadeInLeft"
+    leave-active-class="animated fadeOutRight">
+        <router-view></router-view>
+    </transition>
   </div>
 
 </template>
 
 <script>
-
 export default {
+  beforeCreate: function() {
+    this.$store.dispatch('setItems')
+  },
   name: "app",
   components: {
   }

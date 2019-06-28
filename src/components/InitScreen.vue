@@ -1,7 +1,7 @@
 <template>
   <div
     id="init-screen"
-    class="col-11 mx-auto h-75 border border-primary p-4 rounded">
+    class="screen col-11 mx-auto h-75 border border-primary p-4 rounded">
 
     <div id="messages" class="text-center">
       <p>Were you ever curious if you are an average person in certain situation?</p>
@@ -19,10 +19,7 @@
 </template>
 
 <script>
-
 export default {
-  watch: {
-  },
   methods: {
     nextPage(){
       this.$router.push('age')

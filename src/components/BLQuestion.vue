@@ -1,50 +1,35 @@
 <template>
-  <div id="bl-screen" class="col-11 mx-auto h-75 border border-primary p-4 rounded">
+  <div id="bl-screen" class="screen col-11 mx-auto h-75 border border-primary p-4 rounded">
     <div id="questionBox" class="text-center">
-      <p>{{ getQuestion }}</p>
+      <h3>{{ getQuestion }}</h3>
     </div>
 
     <div class="text-center">
-      <button class="btn btn-primary" @click="randomQuestion()">yes</button>
-      <button class="btn btn-danger" @click="randomQuestion()">no</button>
+      <button class="btn btn-success" @click="yesClick()">yes</button>
+      <button class="btn btn-danger" @click="noClick()">no</button>
+      <p @click="randomQuestion()">skip to next question</p>
     </div>
   </div>
 </template>
 
 <script>
 import { db } from "../firebase";
+
 export default {
-  data() {
-    return {
-      questions: [{
-        content: "test1"
-      },
-      {
-        content: "test2"
-      },
-      {
-        content: "test3"
-      }]
-    };
-  },
   computed: {
-    getQuestion: function(){
-      if (this.questions.length == 0){
-        return "No more question!"
-      } else {
-        return this.questions[0].content
-      }
+    getQuestion(){
+      return this.$store.getters.getBLQuestion;
     }
-  },
-  firestore() {
-    return {
-      // questions: db.collection('blQuestion')
-    }
-  },
-  created() {
-    this.question = "helloworld"
   },
   methods: {
+    yesClick(){
+      //TODO: increment yes-count by 1 in the db
+      this.$router.push("bl-result");
+    },
+    noClick(){
+      //TODO: increment no-count by 1 in the db
+      this.$router.push("bl-result");
+    },
     randomQuestion() {
       let number = Math.floor(Math.random() * 2 + 1); // number between 1 and 2;
 
@@ -55,11 +40,21 @@ export default {
           break;
         case 2:
           this.$router.push("bl-question");
-          // removes the first item in the array
-          this.questions.shift();
           break;
       }
     }
   }
 };
 </script>
+
+<style scoped>
+  p {
+    color: #4287f5;
+    cursor: pointer;
+  }
+
+  p:hover {
+    color: #0f3d86;
+  }
+
+</style>

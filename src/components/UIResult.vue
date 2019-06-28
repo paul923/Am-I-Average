@@ -4,7 +4,7 @@
     class="screen col-11 mx-auto h-75 border border-primary p-4 rounded">
 
     <div id="messages" class="text-center">
-      <h3>This is an Age Screen</h3>
+      <h3>User Input Result Page</h3>
     </div>
     
     <div class="text-center">
