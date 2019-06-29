@@ -2,7 +2,6 @@
   <div id="bl-screen" class="screen col-11 mx-auto h-75 border border-primary p-4 rounded">
     <div id="questionBox" class="text-center">
       <h3>{{ getQuestion }}</h3>
-      <h4>{{getQ}}</h4>
     </div>
 
     <div class="text-center">
@@ -14,22 +13,26 @@
 </template>
 
 <script>
+import { db } from "../store/state"
 export default {
   computed: {
-    getQ () {
-      return this.$store.getters.getQ
-    },
     getQuestion(){
       return this.$store.getters.getBLQuestion[0].content;
     }
   },
   methods: {
     yesClick(){
-      //TODO: increment yes-count by 1 in the db
+      let mId = this.$store.getters.getBLQuestion[0].id
+      let count = this.$store.getters.getBLQuestion[0].yesCount
+      db.collection("blQuestion").doc(mId).update({"yesCount" : count + 1})
+
       this.$router.push("bl-result");
     },
     noClick(){
-      //TODO: increment no-count by 1 in the db
+      let mId = this.$store.getters.getBLQuestion[0].id
+      let count = this.$store.getters.getBLQuestion[0].yesCount
+      db.collection("blQuestion").doc(mId).update({"noCount" : count + 1})
+
       this.$router.push("bl-result");
     },
     randomQuestion() {

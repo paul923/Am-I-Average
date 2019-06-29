@@ -28,18 +28,27 @@ export default {
   //TODO: show result from previous screen
   methods: {
     randomQuestion(){
-      this.$store.state.blQuestion.shift();
-      // let number = Math.floor((Math.random() * 2) + 1); // number between 1 and 2;
-      this.$router.push('bl-question');
-      // Decides a question between user input and boolean
-      // switch(number){
-      //   case 1:
-      //     this.$router.push('ui-question');
-      //     break;
-      //   case 2:
-      //     this.$router.push('bl-question');
-      //     break;
-      // }
+      let blSize = this.$store.state.blQuestion.length;
+      let uiSize = this.$store.state.uiQuestion.length;
+      if(blSize > 1) {
+        // Decides a question between user input and boolean
+        let number = Math.floor((Math.random() * 2) + 1); // number between 1 and 2;
+        switch(number){
+          case 1:
+            this.$router.push('ui-question');
+            break;
+          case 2:
+            this.$router.push('bl-question');
+            break;
+        }
+        this.$store.state.blQuestion.shift();
+      } else if (blSize == uiSize){
+        //TODO: no more question component
+        this.$router.push('/')
+      } else {
+        this.$router.push('ui-question');
+      }
+      
     }
   }
 };

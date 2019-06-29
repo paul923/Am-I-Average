@@ -17,24 +17,15 @@ const config = {
   appId: "1:247200672415:web:75094b7bd1722d82"
 }
 firebase.initializeApp(config)
-const db = firebase.firestore()
+export const db = firebase.firestore()
 
 export default new Vuex.Store({
   state: {
     blQuestion: [],
     uiQuestion: [],
-    question : [{
-      title: 'hi'
-    },
-    {
-      title: 'hi2'
-    }
-    ]
+    userAge : null
   },
   getters: {
-    getQ (state) {
-      return state.question[1].title
-    },
     getBLQuestion (state){
       let blArray = state.blQuestion.sort(() => Math.random() - 0.5);
       return blArray;
@@ -44,7 +35,7 @@ export default new Vuex.Store({
     },
     getUIQuestion (state){
       let uiArray = state.uiQuestion.sort(() => Math.random() - 0.5);
-      return uiArray[0];
+      return uiArray;
     },
     getUIResult (state){
       return state.uiQuestion[0]
@@ -53,7 +44,7 @@ export default new Vuex.Store({
   mutations: {
     setItems: state => {
       let blQuestion = []
-      db.collection('blQuestion').get().then((snapshot) => {
+      db.collection('blQuestion').onSnapshot((snapshot) => {
         blQuestion = []
         snapshot.forEach((doc) => {
           blQuestion.push({
@@ -66,15 +57,20 @@ export default new Vuex.Store({
         state.blQuestion = blQuestion
       })
       let uiQuestion = []
-      db.collection('uiQuestion').get().then((snapshot) => {
+      db.collection('uiQuestion').onSnapshot((snapshot) => {
         uiQuestion = []
         snapshot.forEach((doc) => {
           uiQuestion.push({ 
             id: doc.id, 
-            content: doc.data().content })
+            content: doc.data().content,
+            answer: doc.data().answer })
         })
  
         state.uiQuestion = uiQuestion
+      })
+      db.collection('userInfo').doc("userDoc").get().then((doc) => {
+        state.userAge = doc.data().age
+        console.log(doc.data().age)
       })
     }
   },

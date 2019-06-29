@@ -8,18 +8,29 @@
     </div>
     
     <div class="text-center">
-      <button 
-      class="btn btn-primary"
-      @click="randomQuestion()">Next</button>
+      <p><input class="input" type="number" placeholder="Your Answer" v-model="answer"></p>
+      <button class="btn btn-primary" @click="submit()">Submit</button>
     </div>
   </div>
 </template>
 
 <script>
-
+import { db } from "../store/state"
 
 export default {
+  data() {
+    return{
+      answer: null
+    }
+  },
   methods: {
+    submit(){
+      //TODO: input only number allowed + required
+      let ageArray = this.$store.state.userAge
+      ageArray.push(this.answer)
+      db.collection("userInfo").doc("userDoc").update({"age": ageArray})
+      this.$router.push("ui-result");
+    },
     randomQuestion(){
       let number = Math.floor((Math.random() * 2) + 1); // number between 1 and 2;
       

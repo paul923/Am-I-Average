@@ -8,33 +8,37 @@
     </div>
     
     <div class="text-center">
-      <button class="btn btn-primary" @click="storeAnswer()">Next</button>
+      <p><input class="input" type="number" placeholder="Your Answer" v-model="answer"></p>
+      <button class="btn btn-primary" @click="submit()">Submit</button>
       <p @click="randomQuestion()">skip to next question</p>
     </div>
   </div>
 </template>
 
 <script>
-import { db } from "../firebase";
+import { db } from "../store/state"
 export default {
-  computed: {
-    getQuestion(){
-      return this.$store.getters.getBLQuestion;
+  data() {
+    return{
+      answer: []
     }
   },
-  firestore() {
-    return {
-      questions: db.collection('uiQuestion')
+  computed: {
+    getQuestion(){
+      return this.$store.getters.getUIQuestion[0].content;
     }
   },
   methods: {
-    storeAnswer(){
-      //TODO: Store the user input to the db
+    submit(){
+      //TODO: input only number allowed + required
+      let mId = this.$store.getters.getUIQuestion[0].id
+      let answerArray = this.$store.getters.getUIQuestion[0].answer
+      answerArray.push(this.answer)
+      db.collection("uiQuestion").doc(mId).update({"answer" : answerArray})
       this.$router.push("ui-result");
     },
     randomQuestion() {
       let number = Math.floor(Math.random() * 2 + 1); // number between 1 and 2;
-
       // Decides a question between user input and boolean
       switch (number) {
         case 1:
