@@ -13,6 +13,7 @@ import UIQuestion from './components/UIQuestion.vue';
 import BLQuestion from './components/BLQuestion.vue';
 import BLResult from './components/BLResult.vue';
 import UIResult from './components/UIResult.vue';
+import AgeResult from './components/AgeResult.vue';
 
 import "bootstrap/dist/css/bootstrap.css";
 import "animate.css/animate.css";
@@ -35,6 +36,11 @@ const routes = [
     path: "/age",
     name: "age",
     component: AgeScreen
+  },
+  {
+    path: "/age-result",
+    name: "age-result",
+    component: AgeResult
   },
   {
     path: "/ui-question",

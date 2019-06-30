@@ -39,6 +39,9 @@ export default new Vuex.Store({
     },
     getUIResult (state){
       return state.uiQuestion[0]
+    },
+    getAgeResult (state){
+      return state.userAge
     }
   },
   mutations: {
@@ -70,7 +73,6 @@ export default new Vuex.Store({
       })
       db.collection('userInfo').doc("userDoc").get().then((doc) => {
         state.userAge = doc.data().age
-        console.log(doc.data().age)
       })
     }
   },
