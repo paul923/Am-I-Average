@@ -20,6 +20,9 @@
 
 
 export default {
+  destroyed() {
+    // this.$store.state.blQuestion.shift();
+  },
   computed: {
     getResult(){
       return this.$store.getters.getBLResult
@@ -44,7 +47,7 @@ export default {
         this.$store.state.blQuestion.shift();
       } else if (blSize == uiSize){
         //TODO: no more question component
-        this.$router.push('/')
+        this.$router.push('end')
       } else {
         this.$router.push('ui-question');
       }

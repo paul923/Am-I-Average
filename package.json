@@ -16,6 +16,7 @@
     "firebase": "^6.2.4",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
+    "vee-validate": "^2.2.12",
     "vue": "^2.6.10",
     "vue-firestore": "^0.3.22",
     "vue-page-transition": "^0.2.2",

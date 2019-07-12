@@ -8,8 +8,16 @@
     </div>
     
     <div class="text-center">
-      <p><input class="input" type="number" placeholder="Your Answer" v-model="answer"></p>
-      <button class="btn btn-primary" @click="submit()">Submit</button>
+      <form @submit.prevent="submit">
+        <input class="input" placeholder="Your Answer" v-model="answer" name="answer"
+        v-validate="'required|max_value:100|min_value:1|numeric'">
+        <br>
+        <div class="helo-block alert alert-danger" v-show="errors.has('answer')">
+          {{ errors.first('answer') }}
+        </div>
+        <br>
+        <input class="btn btn-primary" type="submit"/>
+      </form>
     </div>
   </div>
 </template>
@@ -25,11 +33,17 @@ export default {
   },
   methods: {
     submit(){
-      //TODO: input only number allowed + required
-      let ageArray = this.$store.state.userAge
-      ageArray.push(this.answer)
-      db.collection("userInfo").doc("userDoc").update({"age": ageArray})
-      this.$router.push("age-result");
+      this.$validator.validateAll().then((result) => {
+        if(result){
+          let ageArray = this.$store.state.userAge
+          ageArray.push(this.answer)
+          db.collection("userInfo").doc("userDoc").update({"age": ageArray})
+          this.$router.push("age-result");
+        } else{
+          alert('Enter your age!')
+        }
+
+      })
     },
     randomQuestion(){
       let number = Math.floor((Math.random() * 2) + 1); // number between 1 and 2;

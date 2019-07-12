@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import "bootstrap";
 import VueFirestore from 'vue-firestore';
 import store from './store/state'
+import VeeValidate from 'vee-validate';
 
 
 // Components import
@@ -14,6 +15,7 @@ import BLQuestion from './components/BLQuestion.vue';
 import BLResult from './components/BLResult.vue';
 import UIResult from './components/UIResult.vue';
 import AgeResult from './components/AgeResult.vue';
+import EndScreen from './components/EndScreen.vue';
 
 import "bootstrap/dist/css/bootstrap.css";
 import "animate.css/animate.css";
@@ -24,6 +26,7 @@ Vue.config.productionTip = false;
 
 Vue.use(VueFirestore);
 Vue.use(VueRouter);
+Vue.use(VeeValidate);
 
 
 const routes = [
@@ -61,6 +64,11 @@ const routes = [
     path: "/ui-result",
     name: "ui-result",
     component: UIResult
+  },
+  {
+    path: "/end",
+    name: "end",
+    component: EndScreen
   },
 ];
 

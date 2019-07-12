@@ -5,6 +5,7 @@
 
     <div id="messages" class="text-center">
       <h3>User Input Result Page</h3>
+      <p>{{ getResult }}</p>
     </div>
     
     <div class="text-center">
@@ -19,6 +20,9 @@
 
 
 export default {
+  destroyed() {
+    // this.$store.state.blQuestion.shift();
+  },
   computed: {
     getResult(){
       return this.$store.getters.getUIResult
@@ -42,7 +46,7 @@ export default {
         this.$store.state.uiQuestion.shift();
       } else if (blSize == uiSize){
         //TODO: no more question component
-        this.$router.push('/')
+        this.$router.push('end')
       } else {
         this.$router.push('bl-question');
       }

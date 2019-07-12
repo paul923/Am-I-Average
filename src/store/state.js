@@ -27,14 +27,14 @@ export default new Vuex.Store({
   },
   getters: {
     getBLQuestion (state){
-      let blArray = state.blQuestion.sort(() => Math.random() - 0.5);
+      let blArray = state.blQuestion
       return blArray;
     },
     getBLResult (state){
       return state.blQuestion[0]
     },
     getUIQuestion (state){
-      let uiArray = state.uiQuestion.sort(() => Math.random() - 0.5);
+      let uiArray = state.uiQuestion
       return uiArray;
     },
     getUIResult (state){
@@ -57,6 +57,7 @@ export default new Vuex.Store({
             noCount: doc.data().noCount
           })
         })
+        blQuestion.sort(() => Math.random() - 0.5)
         state.blQuestion = blQuestion
       })
       let uiQuestion = []
@@ -68,7 +69,7 @@ export default new Vuex.Store({
             content: doc.data().content,
             answer: doc.data().answer })
         })
- 
+        uiQuestion.sort(() => Math.random() - 0.5)
         state.uiQuestion = uiQuestion
       })
       db.collection('userInfo').doc("userDoc").get().then((doc) => {
